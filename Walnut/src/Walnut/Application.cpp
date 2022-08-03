@@ -15,6 +15,8 @@
 
 #include <iostream>
 
+#include "implot.h"
+
 // Emedded font
 #include "ImGui/Roboto-Regular.embed"
 
@@ -403,6 +405,7 @@ namespace Walnut {
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
+		ImPlot::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
 		io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
 		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -490,6 +493,7 @@ namespace Walnut {
 		check_vk_result(err);
 		ImGui_ImplVulkan_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
+		ImPlot::DestroyContext();
 		ImGui::DestroyContext();
 
 		CleanupVulkanWindow();
